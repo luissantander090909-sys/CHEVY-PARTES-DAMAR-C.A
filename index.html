@@ -3,14 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CHEVY PARTES DAMAR C.A | Catálogo</title>
+  <title>Mi Tienda | Catálogo</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
   <style>
-    .category-link { text-decoration: none; color: #333; display: block; padding: 6px 0; }
-    .category-link:hover { color: #0d6efd; font-weight: 500; }
-    .product-card { transition: transform 0.2s, shadow 0.2s; border: 1px solid #eee; }
-    .product-card:hover { transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+    .category-link { 
+      text-decoration: none; 
+      color: #333; 
+      display: block; 
+      padding: 8px 12px; 
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    .category-link:hover, .category-link.active { 
+      color: #0d6efd; 
+      background-color: #e7f1ff; 
+      font-weight: 600; 
+    }
+    .product-card { 
+      transition: transform 0.2s, box-shadow 0.2s; 
+      border: 1px solid #eee; 
+    }
+    .product-card:hover { 
+      transform: translateY(-3px); 
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08); 
+    }
   </style>
 </head>
 <body class="bg-white">
@@ -18,9 +35,9 @@
   <!-- Header / Nav -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom sticky-top">
     <div class="container">
-      <a class="navbar-brand fw-bold text-primary" href="#">CHEVY PARTES DAMAR C.A</a>
+      <a class="navbar-brand fw-bold text-primary" href="#">MI TIENDA</a>
       <div class="d-flex w-50">
-        <input type="text" id="searchInput" class="form-control me-2" placeholder="Buscar productos...">
+        <input type="text" id="searchInput" class="form-control me-2" placeholder="Buscar por nombre o código...">
       </div>
       <div>
         <a href="https://wa.me/584244308679" target="_blank" class="btn btn-success btn-sm">
@@ -30,51 +47,54 @@
     </div>
   </nav>
 
-  <!-- Main Content Layout (Estilo Odoo) -->
+  <!-- Main Content Layout -->
   <div class="container my-4">
     <div class="row">
       
       <!-- Lateral: Categorías -->
       <aside class="col-md-3 mb-4">
         <h5 class="fw-bold mb-3">Categorías</h5>
-        <ul class="list-unstyled">
-          <li><a href="#" class="category-link">Todos los productos</a></li>
-          <li><a href="#" class="category-link">Motor y Piezas</a></li>
-          <li><a href="#" class="category-link">Frenos y Suspensión</a></li>
-          <li><a href="#" class="category-link">Accesorios</a></li>
+        <ul class="list-unstyled" id="categoryList">
+          <li><a href="#" class="category-link active" data-category="all">Todos los productos</a></li>
+          <li><a href="#" class="category-link" data-category="motor">Motor y Piezas</a></li>
+          <li><a href="#" class="category-link" data-category="frenos">Frenos y Suspensión</a></li>
+          <li><a href="#" class="category-link" data-category="accesorios">Accesorios</a></li>
         </ul>
       </aside>
 
       <!-- Catálogo Principal -->
       <main class="col-md-9">
         <div class="d-flex justify-content-between align-items-center mb-3">
-          <span class="text-muted" id="count">Mostrando catálogo</span>
+          <span class="text-muted fw-semibold" id="count">Mostrando catálogo</span>
         </div>
 
-        <!-- Catálogo Principal -->
+        <div class="row row-cols-1 row-cols-md-3 g-4" id="productGrid">
           
           <!-- Producto 1 -->
-         <div class="tarjeta-producto">
-          <div class="col product-item">
+          <div class="col product-item" data-category="motor">
             <div class="card h-100 product-card">
-              <img src="https://http2.mlstatic.com/D_NQ_NP_946901-MLV52028008426_102022-O.webp" class="card-img-top p-2" alt="Producto 1">
+              <img src="https://via.placeholder.com/300x200" class="card-img-top p-2" alt="Juego de Empacaduras">
               <div class="card-body d-flex flex-column">
-                <h6 class="card-title fw-bold">Juego de Empacaduras Aveo 1.6</h6>
-                <p class="card-text text-muted small">Código / Referencia del producto.</p>
+                <h6 class="card-title fw-bold">Juego de Empacaduras</h6>
+                <p class="card-text text-muted small product-code">Código: EMP-4.6L-FORD</p>
                 <div class="mt-auto pt-2 border-top d-flex justify-content-between align-items-center">
                   <span class="fs-5 fw-bold text-dark">$35.00</span>
-                  <a href="https://wa.me/584240000000?text=Hola,%20me%20interesa:%20Juego%20de%20Empacaduras" class="btn btn-outline-primary btn-sm">Comprar</a>
-              
-          <!-- Producto 2 -->
-         <div class="tarjeta-producto">
-           <div class="col product-item">
+                  <a href="https://wa.me/584244308679?text=Hola,%20me%20interesa:%20Juego%20de%20Empacaduras" target="_blank" class="btn btn-outline-primary btn-sm">Comprar</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Producto 2 (Ejemplo adicional) -->
+          <div class="col product-item" data-category="frenos">
             <div class="card h-100 product-card">
-              <img src="https://http2.mlstatic.com/D_NQ_NP_704123-MLV112809016405_062026-O.webp" class="card-img-top p-2" alt="Producto 1">
-                <h6 class="card-title fw-bold">Juego de Empacaduras Aveo 1.6</h6>
-                <p class="card-text text-muted small">Código / Referencia del producto.</p>
+              <img src="https://via.placeholder.com/300x200" class="card-img-top p-2" alt="Pastillas de Freno">
+              <div class="card-body d-flex flex-column">
+                <h6 class="card-title fw-bold">Pastillas de Freno Delanteras</h6>
+                <p class="card-text text-muted small product-code">Código: PF-CHEV-01</p>
                 <div class="mt-auto pt-2 border-top d-flex justify-content-between align-items-center">
-                  <span class="fs-5 fw-bold text-dark">$35.00</span>
-                  <a href="https://wa.me/584240000000?text=Hola,%20me%20interesa:%20Juego%20de%20Empacaduras" class="btn btn-outline-primary btn-sm">Comprar</a>
+                  <span class="fs-5 fw-bold text-dark">$22.00</span>
+                  <a href="https://wa.me/584244308679?text=Hola,%20me%20interesa:%20Pastillas%20de%20Freno" target="_blank" class="btn btn-outline-primary btn-sm">Comprar</a>
                 </div>
               </div>
             </div>
@@ -85,6 +105,3 @@
 
     </div>
   </div>
-
-</body>
-</html>
